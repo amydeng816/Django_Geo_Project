@@ -3,27 +3,28 @@
 
 {% block jumbotron %}
      <div class="jumbotron">
-        <h1>Welcome Home!</h1>
-        <p>This example is a quick exercise to illustrate how the default, static navbar and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+        <h1 style="color: #FF3366" face="palatino">Welcome!</h1>
+        <p style="color: #FF3366" face="verdana">This is a web-based app to help find restaurants around specific locations.</p>
         <p>
-          <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
+          <form method='POST' action='' > {% csrf_token %}
+    <input type='text' name='search'>
+    <input type='submit' value='Search Locations' class='btn btn-danger'>
+</form>
         </p>
       </div>
 {% endblock %}
 
 {% block content %}
-
-<form method='POST' action='' > {% csrf_token %}
-    <input type='text' name='search'>
-    <input type='submit' value='submit'>
-</form>
-
+<div class='text-success'>
+   <font size="6" face="verdana" style="color: #FF3366">
 {% if locations %}
 You searched for {{ Query }}
 <ul>
     {% for name, loc_id in locations %}
-    <li><a href='location/{{ loc_id }}'>{{ name }}</a></li>
+    <li><a href='location/{{ loc_id }}' style="color: #660000">{{ name }}</a></li>
     {% endfor %}
 </ul>
 {% endif %}
+</font> 
+</div>
 {% endblock %}

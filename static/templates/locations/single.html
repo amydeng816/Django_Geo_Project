@@ -40,9 +40,9 @@ var newurl = '';
         };
 console.log(newurl)
 function clickedButton() {
-    x = newurl;
-    window.location.href = x;
+    window.location.href = newurl;
 }
+
 
 var map;
 var latlngset = new google.maps.LatLng(lat, lng);
@@ -57,9 +57,7 @@ map.setCenter(latlngset);
 var marker = new google.maps.Marker({
     map: map, title: '{{ location }}', position: latlngset
 });
-var markeryou = new google.maps.Marker({
-    map: map, title: 'You are here!', position: latlngset1
-});
+
 var content = '<h4>' + '{{ location }}' + '</h4>' + '<p>Is located at ' + lat + ', ' + lng + '</p>' ;
 var infowindow = new google.maps.InfoWindow();
 infowindow.setContent(content);
@@ -86,17 +84,21 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 
 {% block content %}
-<div class='row'>
-<div class='col-lg-6'>
-{{ location }}
+<div class='text-success'>
 
-{{ details }}
-</div>
-<div class='col-lg-6'>
+<font size="6" face="verdana" style="color: #660000" >
+<p>{{ location }}</p>
+<p>{{ telephone }}</p>
+<a href={{ website }} style="color: #660000">Go To {{ location }}'s Website</a>
+<p>{{ address }}</p>
+<p>
+    <form method="post">
+    <input type="button" class="btn btn-danger" value="Navigate" onclick="clickedButton()">
+    </form>
+</p>
+</font>
 <div id="map-canvas"></div>
+
 </div>
-</div>
-<form method="post">
-    <input type="button" value="Navigate" onclick="clickedButton()">
-</form>
+
 {% endblock %}
