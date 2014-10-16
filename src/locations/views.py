@@ -33,6 +33,6 @@ def single_location(request, id):
             location = "Unexpected error:", sys.exc_info()[0]
         details = foursquare_details(id)
         #details = Location.objects.all()
-        #print 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+        print 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
         print details
     return render_to_response('locations/single.html', locals(), context_instance=RequestContext(request))
